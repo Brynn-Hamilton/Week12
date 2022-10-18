@@ -1,7 +1,7 @@
 console.log("======= Tallest Mountain =======")
 interface Mountain {
-  name: string,
-  height: number
+  name: string;
+  height: number;
 }
 
 let mountains: Mountain[] = [
@@ -28,8 +28,8 @@ console.log(findNameOfTallestMountain(mountains));
 console.log("======= Products =======")
 
 interface Product {
-  name: string,
-  price: number
+  name: string;
+  price: number;
 }
 
 let products: Product[] = [
@@ -53,23 +53,24 @@ console.log(calcAveragePrice(products));
 console.log("======= Inventory =======")
 
 interface InventoryItem {
-  product: Product[],
-  quantity: number
+  product: Product;
+  quantity: number;
 }
 
 let inventory: InventoryItem[] = [
-  { products.name: "motor", products.price: 10.00, quantity: 10 },
-  { products.name: "motor", products.price: 10.00, quantity: 10 },
-  { products.name: "motor", products.price: 10.00, quantity: 10 },
+  { product: {name: "Motor", price: 10 }, quantity: 10},
+  { product: {name: "Sensor", price: 12.50 }, quantity: 4},
+  { product: {name: "LED", price: 1 }, quantity: 20},
 ];
 
-function calcInventoryValue(products: Product[]): number {
-  let sum: number = 0;
-  let average: number = 0;
-  for (let index: number = 0; index < products.length; index++) {
-    sum += (products[index].price);
-    average = (sum / products.length)
+
+function calcInventoryValue(inv: InventoryItem[]): number {
+  let total: number = 0;
+  for(let i:number=0; i <inv.length; i++){
+    let value = inv[i].product.price * inv[i].quantity;
+    total += value;
   }
-  return average;
+  return total;
 }
-console.log(calcAveragePrice(products));
+
+console.log(calcInventoryValue(inventory));
